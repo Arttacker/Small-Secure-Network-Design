@@ -9,6 +9,7 @@ Device(config)# hostname <name>
 
 2. Securing privileged access
 ```
+Device(config)# security passwords min-length 12
 Device(config)# enable secret strong-PASS@2024
 Device(config)# service password-encryption
 ```
@@ -81,7 +82,12 @@ Device(config)# crypto key generate rsa general-keys modulus 2048
 Device(config)# username admin secret strong-sshPASS@2024
 ```
 
-4. Using SSH version 2
+4. Allowing VTY logins for two minutes if three failed login attempts occur within 60 seconds.
+```
+Device(config)# login block-for 120 attempts 3 within 60
+```
+
+5. Using SSH version 2
 ```
 Device(config)# ip ssh version 2
 ```
@@ -152,12 +158,6 @@ Switch(config-if)# switchport trunk allowed vlan 10,20,99
 Switch(config-if)# no shutdown
 ```
 
-## Configuring the gateway for the switches' SVIs
-
-```
-Switch# 
-```
-
 ## Configuring router-on-a-stick inter-VLAN routing on the router
 
 ```
@@ -198,27 +198,68 @@ Grateway(config-if)# no shutdown
 
 ```
 
-## Configuring the Interface Connecting to the Router (G0/1) as a Trunk
-
-```
-Grateway(config)# interface G0/1
-Grateway(config-if)# switchport mode trunk
-Grateway(config-if)# switchport trunk allowed vlan 10,20,99,100
-Grateway(config-if)# switchport trunk native vlan 100
-Grateway(config-if)# no shutdown
-```
-
 ---
 # Phase - 3 (Security Measures)
 
+## Implemented features that considers security
 
-1. Configuring the device to have min password length 12 characters
+1. Using `enable secret` instead of `enable password` for more secure password by using **md5** hashing algorithm.
+2. Changing the default **native & management** VLANs from **VLAN 1** to be **VLAN 99 (Management)** and **VLAN 100 (Native)**.
+3. Using **SSH version 2** instead of the legacy version 1.
+4. Using a large modulus space with a 2048 bits when generating the **RSA** keys for **SSH communication encryption**.
+5. Setting a password policy that restricts using a password length of min. size of **12 characters** when configuring the network devices.
+6. Allowing VTY logins for two minutes if three failed login attempts occur within 60 seconds.
+
+## Implementing Port Security
+
+### 1. Shutting Down Unused Ports
+
 ```
-Device(config)# security passwords min-length 12
+Switch(config)# interface range <interface-id>
+Switch(config-if)# shutdown
 ```
 
-2. Allowing VTY logins for two minutes if three failed login attempts occur within 60 seconds.
+### 2. Mitigating MAC Address Table Overflow Attacks
+##### Enabling Port Security
+
 ```
-Device(config)# login block-for 120 attempts 3 within 60
+Switch(config)# interface <interface-id>
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport port-security
 ```
+##### Setting the max. number of secure MAC address to 1
+
+```
+Switch(config-if)# switchport port-security maximum 1
+```
+
+##### Configuring the learning process for the MAC address to sticky
+
+```
+Switch(config-if)# switchport port-security mac-address sticky
+```
+
+##### Setting the Port Security Violation Mode to restrict
+```
+Switch(config-if)# switchport port-security violation restrict
+```
+
+## Mitigating VLAN Hopping Attacks
+
+1. Disable DTP (auto trunking) negotiations on non-trunking ports by using the **`switchport mode access`** interface configuration command.
+
+2. Disable unused ports and put them in an unused VLAN.
+
+3. Manually enable the trunk link on a trunking port by using the **`switchport mode trunk`** command.
+
+4. Disable DTP (auto trunking) negotiations on trunking ports by using the **`switchport nonegotiate`** command.
+
+5. Set the native VLAN to a VLAN other than VLAN 1 by using the **`switchport trunk native vlan vlan_number`** command.
+
+## Mitigating ARP Attacks
+## Implementing Access Control Lists (ACLs)
+
+
+
+
 
