@@ -46,23 +46,24 @@ Device# clock set 14:30:00 10 Oct 2024
 ### Addressing & VLANs Table
 
 
-| Device    | Interface                                            | Physical port | Address                                                                      | Subnet Mask                                                                       | Default Gateway                 | VLAN                        |
-| --------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
-| Gateway   | G0/0.10<br>G0/0.20<br>G0/0.50<br>G0/0.99<br>G0/0.100 | G0/0          | 192.168.10.1<br>192.168.20.1<br>172.18.50.1<br>192.168.99.1<br>192.168.100.1 | 255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0 | N/A<br>N/A<br>N/A<br>N/A<br>N/A | 10<br>20<br>50<br>99<br>100 |
-| SW1       | SVI                                                  | N/A           | 192.168.99.251                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
-| SW2       | SVI                                                  | N/A           | 192.168.99.252                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
-| PC1       | NIC                                                  | SW2 - Fa0/2   | 192.168.10.10                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC2       | NIC                                                  | SW2 - Fa0/3   | 192.168.10.11                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC3       | NIC                                                  | SW2 - Fa0/4   | 192.168.20.10                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC4       | NIC                                                  | SW2 - Fa0/5   | 192.168.20.11                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC5       | NIC                                                  | SW3 - Fa0/2   | 192.168.10.12                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC6       | NIC                                                  | SW3 - Fa0/3   | 192.168.10.13                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC7       | NIC                                                  | SW3 - Fa0/4   | 192.168.20.12                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC8       | NIC                                                  | SW3 - Fa0/5   | 192.168.20.13                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC9       | NIC                                                  | SW3 - Fa0/6   | 192.168.20.14                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC10      | NIC                                                  | SW3 - Fa0/7   | 192.168.20.15                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| WebServer | NIC                                                  | SW3 - Fa0/8   | 172.18.50.50                                                                 | 255.255.255.0                                                                     | 172.18.50.1                     | 50                          |
-| Database  | NIC                                                  | SW3 - Fa0/9   | 192.168.20.17                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| Device        | Interface                                            | Physical port | Address                                                                      | Subnet Mask                                                                       | Default Gateway                 | VLAN                        |
+| ------------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
+| Gateway       | G0/0.10<br>G0/0.20<br>G0/0.50<br>G0/0.99<br>G0/0.100 | G0/0          | 192.168.10.1<br>192.168.20.1<br>172.18.50.1<br>192.168.99.1<br>192.168.100.1 | 255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0 | N/A<br>N/A<br>N/A<br>N/A<br>N/A | 10<br>20<br>50<br>99<br>100 |
+| SW1           | SVI                                                  | N/A           | 192.168.99.251                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| SW2           | SVI                                                  | N/A           | 192.168.99.252                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| PC1           | NIC                                                  | SW1 - Fa0/2   | 192.168.10.10                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC2           | NIC                                                  | SW1 - Fa0/3   | 192.168.10.11                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC3           | NIC                                                  | SW1 - Fa0/4   | 192.168.20.10                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC4           | NIC                                                  | SW1 - Fa0/5   | 192.168.20.11                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| Administrator | NIC                                                  | SW1 - Fa0/6   | 192.168.99.250                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| PC5           | NIC                                                  | SW2 - Fa0/2   | 192.168.10.12                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC6           | NIC                                                  | SW2 - Fa0/3   | 192.168.10.13                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC7           | NIC                                                  | SW2 - Fa0/4   | 192.168.20.12                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC8           | NIC                                                  | SW2 - Fa0/5   | 192.168.20.13                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC9           | NIC                                                  | SW2 - Fa0/6   | 192.168.20.14                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC10          | NIC                                                  | SW2 - Fa0/7   | 192.168.20.15                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| WebServer     | NIC                                                  | SW2 - Fa0/8   | 172.18.50.50                                                                 | 255.255.255.0                                                                     | 172.18.50.1                     | 50                          |
+| Database      | NIC                                                  | SW2 - Fa0/9   | 192.168.20.17                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
 
 ## Configuring SSH For Remote Management
 
@@ -113,23 +114,24 @@ Switch(config-vlan)# name <vlan-name>
 
 ## Addressing Table
 
-| Device    | Interface                                            | Physical port | Address                                                                      | Subnet Mask                                                                       | Default Gateway                 | VLAN                        |
-| --------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
-| Gateway   | G0/0.10<br>G0/0.20<br>G0/0.50<br>G0/0.99<br>G0/0.100 | G0/0          | 192.168.10.1<br>192.168.20.1<br>172.18.50.1<br>192.168.99.1<br>192.168.100.1 | 255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0 | N/A<br>N/A<br>N/A<br>N/A<br>N/A | 10<br>20<br>50<br>99<br>100 |
-| SW1       | SVI                                                  | N/A           | 192.168.99.251                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
-| SW2       | SVI                                                  | N/A           | 192.168.99.252                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
-| PC1       | NIC                                                  | SW2 - Fa0/2   | 192.168.10.10                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC2       | NIC                                                  | SW2 - Fa0/3   | 192.168.10.11                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC3       | NIC                                                  | SW2 - Fa0/4   | 192.168.20.10                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC4       | NIC                                                  | SW2 - Fa0/5   | 192.168.20.11                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC5       | NIC                                                  | SW3 - Fa0/2   | 192.168.10.12                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC6       | NIC                                                  | SW3 - Fa0/3   | 192.168.10.13                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
-| PC7       | NIC                                                  | SW3 - Fa0/4   | 192.168.20.12                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC8       | NIC                                                  | SW3 - Fa0/5   | 192.168.20.13                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC9       | NIC                                                  | SW3 - Fa0/6   | 192.168.20.14                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| PC10      | NIC                                                  | SW3 - Fa0/7   | 192.168.20.15                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
-| WebServer | NIC                                                  | SW3 - Fa0/8   | 172.18.50.50                                                                 | 255.255.255.0                                                                     | 172.18.50.1                     | 50                          |
-| Database  | NIC                                                  | SW3 - Fa0/9   | 192.168.20.17                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| Device        | Interface                                            | Physical port | Address                                                                      | Subnet Mask                                                                       | Default Gateway                 | VLAN                        |
+| ------------- | ---------------------------------------------------- | ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------- | --------------------------- |
+| Gateway       | G0/0.10<br>G0/0.20<br>G0/0.50<br>G0/0.99<br>G0/0.100 | G0/0          | 192.168.10.1<br>192.168.20.1<br>172.18.50.1<br>192.168.99.1<br>192.168.100.1 | 255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0<br>255.255.255.0 | N/A<br>N/A<br>N/A<br>N/A<br>N/A | 10<br>20<br>50<br>99<br>100 |
+| SW1           | SVI                                                  | N/A           | 192.168.99.251                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| SW2           | SVI                                                  | N/A           | 192.168.99.252                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| PC1           | NIC                                                  | SW1 - Fa0/2   | 192.168.10.10                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC2           | NIC                                                  | SW1 - Fa0/3   | 192.168.10.11                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC3           | NIC                                                  | SW1 - Fa0/4   | 192.168.20.10                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC4           | NIC                                                  | SW1 - Fa0/5   | 192.168.20.11                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| Administrator | NIC                                                  | SW1 - Fa0/6   | 192.168.99.250                                                               | 255.255.255.0                                                                     | 192.168.99.1                    | 99                          |
+| PC5           | NIC                                                  | SW2 - Fa0/2   | 192.168.10.12                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC6           | NIC                                                  | SW2 - Fa0/3   | 192.168.10.13                                                                | 255.255.255.0                                                                     | 192.168.10.1                    | 10                          |
+| PC7           | NIC                                                  | SW2 - Fa0/4   | 192.168.20.12                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC8           | NIC                                                  | SW2 - Fa0/5   | 192.168.20.13                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC9           | NIC                                                  | SW2 - Fa0/6   | 192.168.20.14                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| PC10          | NIC                                                  | SW2 - Fa0/7   | 192.168.20.15                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
+| WebServer     | NIC                                                  | SW2 - Fa0/8   | 172.18.50.50                                                                 | 255.255.255.0                                                                     | 172.18.50.1                     | 50                          |
+| Database      | NIC                                                  | SW2 - Fa0/9   | 192.168.20.17                                                                | 255.255.255.0                                                                     | 192.168.20.1                    | 20                          |
 
 ## Configuring access ports on the switches
 
@@ -211,14 +213,14 @@ Grateway(config-if)# no shutdown
 
 ## Implementing Port Security
 
-### 1. Shutting Down Unused Ports
+#### 1. Shutting Down Unused Ports
 
 ```
 Switch(config)# interface range <interface-id>
 Switch(config-if)# shutdown
 ```
 
-### 2. Mitigating MAC Address Table Overflow Attacks
+#### 2. Mitigating MAC Address Table Overflow Attacks
 ##### Enabling Port Security
 
 ```
@@ -253,7 +255,6 @@ Switch(config-if)# switchport port-security violation restrict
 
 4. Disable DTP (auto trunking) negotiations on trunking ports by using the **`switchport nonegotiate`** command.
 
-5. Set the native VLAN to a VLAN other than VLAN 1 by using the **`switchport trunk native vlan vlan_number`** command.
 ## Mitigating ARP Attacks by implementing Dynamic ARP inspection (DAI)
 
 
@@ -277,28 +278,24 @@ To achieve the two objectives with **Access Control Lists (ACLs)**, we'll need t
 
 For this objective, we want traffic from the Internet (on interface **G0/1**) to access only VLAN 50 (the DMZ) while denying access to other VLANs.
 
-#### Step 1.1: Create an Extended Access List
+#### Step 1.1: Creating an Extended Access List
 We'll create an extended access list to allow only traffic destined for **VLAN 50** (subinterface **G0/0.50**) and deny access to other VLANs.
 
 ```
-access-list 100 permit ip any 172.18.50.0 0.0.0.255
-access-list 100 deny ip any 192.168.10.0 0.0.0.255
-access-list 100 deny ip any 192.168.20.0 0.0.0.255
-access-list 100 deny ip any 192.168.99.0 0.0.0.255
-access-list 100 deny ip any 192.168.100.0 0.0.0.255
-access-list 100 permit ip any any
+Grateway(config)# access-list 100 permit ip any 172.18.50.0 0.0.0.255
+Grateway(config)# access-list 100 deny ip any 192.168.10.0 0.0.0.255
+Grateway(config)# access-list 100 deny ip any 192.168.20.0 0.0.0.255
+Grateway(config)# access-list 100 deny ip any 192.168.99.0 0.0.0.255
+Grateway(config)# access-list 100 deny ip any 192.168.100.0 0.0.0.255
+Grateway(config)# access-list 100 permit ip any any
 ```
-
-- **`permit ip any 172.18.50.0 0.0.0.255`**: Allows traffic from any source (the Internet) to the DMZ network (VLAN 50).
-- **`deny ip any [VLAN subnet]`**: Denies traffic to all other VLANs.
-- **`permit ip any any`**: Allows all other traffic (this ensures no disruption to other traffic unrelated to the VLANs).
 
 #### Step 1.2: Apply the ACL to Interface G0/1 (Internet-Facing Interface)
 Next, we’ll apply this ACL to the **GigabitEthernet0/1** interface to filter incoming traffic from the Internet.
 
 ```
-interface GigabitEthernet 0/1
- ip access-group 100 in
+Grateway(config)# interface GigabitEthernet 0/1
+Grateway(config-if)# ip access-group 100 in
 ```
 
 This applies **ACL 100** to **inbound traffic** on the Internet-facing interface.
@@ -311,15 +308,12 @@ For this objective, we need to block any communication between **VLAN 50 (DMZ)**
 Create an ACL to **deny traffic** between VLAN 50 and other VLANs, and then apply it to **each VLAN's subinterface**.
 
 ```
-access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.10.0 0.0.0.255
-access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.20.0 0.0.0.255
-access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.99.0 0.0.0.255
-access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.100.0 0.0.0.255
-access-list 110 permit ip any any
+Grateway(config)# access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.10.0 0.0.0.255
+Grateway(config)# access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.20.0 0.0.0.255
+Grateway(config)# access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.99.0 0.0.0.255
+Grateway(config)# access-list 110 deny ip 172.18.50.0 0.0.0.255 192.168.100.0 0.0.0.255
+Grateway(config)# access-list 110 permit ip any any
 ```
-
-- **`deny ip 172.18.50.0 0.0.0.255 [other VLAN subnet]`**: Denies traffic from VLAN 50 to other VLANs.
-- **`permit ip any any`**: Allows any other traffic that is not related to VLAN 50 and the other VLANs.
 
 #### Step 2.2: Apply the ACL to Each VLAN's Subinterface
 
